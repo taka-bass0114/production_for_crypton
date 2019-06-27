@@ -43,8 +43,6 @@ int main(){
 
     ofstream fout;
 
-    fout.open(new_filename, ios::out|ios::binary|ios::trunc);
-
     ifstream fin( outfile, ios::in | ios::binary );
     //  ファイルを開く
     //  ios::in は読み込み専用  ios::binary はバイナリ形式
@@ -64,6 +62,8 @@ int main(){
         return 1;
     }
     //  ファイルが開けなかったときの対策
+
+        fout.open(new_filename, ios::out|ios::binary|ios::trunc);
 
     if (!fout) {
         cout << "ファイル fout が開けません";
