@@ -1,11 +1,11 @@
 // waveconbiation_by_binary.cpp
 
 /***********
-C++学習サイト：
-C++入門
+◯C++学習サイト
+・C++入門
 http://www.asahi-net.or.jp/~yf8k-kbys/newcpp0.html
 
-参考サイト：
+◯作品制作参考サイト
 ・バイナリファイルの読み込みと書き込み　Ｃ＋＋
 http://gurigumi.s349.xrea.com/programming/binary.html
 
@@ -24,9 +24,10 @@ http://washieagle.blogspot.com/2010/01/stdfstream.html
 ①チャンクの更新
 ②ファイルの結合
 
-waveファイルの学習：
+◯waveファイルの学習：
 https://www.youfit.co.jp/archives/1418
-作品制作に利用したwaveファイル test.wavもこのサイト内のサンプルを用いた。
+作品制作に利用したwaveファイル sample.wavもこのサイト内のサンプルを用いた。
+
 
 ************/
 
@@ -36,9 +37,9 @@ https://www.youfit.co.jp/archives/1418
 using namespace std;
 
 int main(){
-    char outfile[] = "sample.wav";  //読み込むファイルの指定
-    char outfile_next[] = "test2.wav";  //くっつけるファイルの指定
-    char new_filename[] = "arranged.wav"; // 生成するファイル名を設定
+    char outfile[] = "./sample.wav";  //読み込むファイルの指定
+    char outfile_next[] = "./test2.wav";  //くっつけるファイルの指定
+    char new_filename[] = "./arranged.wav"; // 生成するファイル名を設定
 
     ofstream fout;
 
@@ -57,7 +58,6 @@ int main(){
     ifstream fin2( outfile_next, ios::in | ios::binary );
     //  ファイルを開く
     //  ios::in は読み込み専用  ios::binary はバイナリ形式
-
 
     if (!fin2){
         cout << "ファイル fin2 が開けません";
@@ -97,9 +97,8 @@ int main(){
 
     /* ファイルの大きさの確認その１ */
 
-    cout << 44 * sizeof(char) << endl;
     data += size;
-    cout << data <<endl;
+    cout << outfile << "のデータ部分のサイズ：" << data <<endl;
 
     /* 以下参考：
     http://washieagle.blogspot.com/2010/01/stdfstream.html
@@ -119,6 +118,7 @@ int main(){
     /* 参考ここまで */
 
     data += size;
+    cout << outfile_next << "のデータ部分のサイズ；" << size <<endl;
     cout << "生成される"<< new_filename <<"データのサイズ：" << data <<endl;
 
     cout<<endl;
